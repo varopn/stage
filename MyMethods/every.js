@@ -1,4 +1,3 @@
-'use strict';
 let numbers = [1, 2, 3, 4, 5];
 
 numbers.every = function(callback) {
