@@ -1,3 +1,15 @@
+function arrayOfUserIdByMap(users) {
+    return users.map(function(user) { return user.id });
+}
+
+function arrayOfUserIdByForEach(users) {
+    let arrayOfUserId = [];
+
+    users.forEach(user => arrayOfUserId.push(user.id));
+
+    return arrayOfUserId;
+}
+
 let users = [{
     id: 0,
     name: 'Bob',
@@ -25,9 +37,5 @@ let users = [{
     phoneNumber: '47348t28943'
 }];
 
-let arrayOfUserId = users.map(function(user) { return user.id });
-let arrayOfUserId1 = [];
-users.forEach(user => arrayOfUserId1.push(user.id));
-
-console.log(arrayOfUserId);
-console.log(arrayOfUserId1);
+console.log(arrayOfUserIdByMap(users));
+console.log(arrayOfUserIdByForEach(users));
