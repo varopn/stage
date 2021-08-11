@@ -1,3 +1,8 @@
+function filteringByArrayOfIds(users, arrayOfIds) {
+    return users.filter(user => arrayOfIds.some((element) => { return element === user.id} ));
+}
+
+let arrayOfIds = [1, 4, 7];
 let users = [{
     id: 0,
     name: 'Bob',
@@ -9,7 +14,7 @@ let users = [{
     email: 'kale@gmail.com',
     phoneNumber: '24352345',
 }, {
-    id: 908,
+    id: 4,
     name: 'John',
     email: 'johnasd232@gmail.com',
     phoneNumber: '32473747234',
@@ -19,12 +24,10 @@ let users = [{
     email: 'johnasd232@gmail.com',
     phoneNumber: '47348t28943'
 }, {
-    id: 249,
+    id: 10,
     name: 'John',
     email: 'johnasd232@gmail.com',
     phoneNumber: '47348t28943'
 }];
-let arrayOfId = [1, 4, 7];
-let filteredArray = users.filter(user => arrayOfId.some((element) => { return element === user.id} ));
 
-console.log(filteredArray);
+console.log(filteringByArrayOfIds(users,arrayOfIds));
