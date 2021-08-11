@@ -1,3 +1,9 @@
+function sumOfIds(users) {
+    return users.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.id, 0
+    );
+}
+
 let users = [{
     id: 2,
     name: 'Bob',
@@ -25,11 +31,4 @@ let users = [{
     phoneNumber: '47348t28943'
 }];
 
-
-let initialValue = 0;
-let sumOfId = users.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.id,
-    initialValue
-);
-
-console.log(sumOfId);
+console.log(sumOfIds(users));
