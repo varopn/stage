@@ -21,7 +21,3 @@ class User {
         return `${this._name} from ${this._country} wit age ${this._age}`;
     }
 };
-
-let user = new User('f',16,'g');
-console.log(user.getUserData());
-console.log(user.name);
