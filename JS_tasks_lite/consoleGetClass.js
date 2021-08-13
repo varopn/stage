@@ -24,6 +24,7 @@ class User {
 
 let user = new User('John',32,'USA');
 console.log(user.getUserData());
+
 console.log('User name is ' + user.name);
 console.log('User age is ' + user.age);
 console.log('User country is ' + user.country);

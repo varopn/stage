@@ -1,7 +1,11 @@
 function sumOfIds(users) {
-    return users.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.id, 0
-    );
+    let accumulator = 0;
+
+    for (let i = 0; i < users.length; i++) {
+        accumulator = accumulator + users[i].id;
+    }
+
+    return accumulator;
 }
 
 let users = [{

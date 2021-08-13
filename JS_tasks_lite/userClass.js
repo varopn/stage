@@ -34,6 +34,7 @@ class User {
     }
 };
 
+
 let user = new User("John",13,"Hik");
 console.log(user.getUserData());
 user.age = 14;
