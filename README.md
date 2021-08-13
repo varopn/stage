@@ -1,4 +1,4 @@
-# stage
+# Stage
 Each task is performed as a function implementation. Commits are used to denote the issue number.
 
 My Methods folder includes own realisation of array's iteration methods
