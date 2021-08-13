@@ -149,6 +149,10 @@ VALUES
   (3,3,"2021-08-12",45000,5000,40000),
   (4,4,"2021-08-12",12000,2000,10000),
   (5,5,"2021-08-12",25000,5000,20000);
+ 
+INSERT INTO SalaryTransferLogs 
+VALUES
+  (6,1,"2021-08-12",10000,3000,7000);
 
 INSERT INTO UsersEducation 
 VALUES
@@ -195,6 +199,30 @@ SELECT COUNT(first_name)
 FROM Users
 WHERE age > 25;
 
+SELECT *
+FROM Users
+ORDER BY age DESC;
+
+SELECT *
+FROM Users
+ORDER BY age DESC
+LIMIT 3;
+
+SELECT MIN(age)
+FROM Users;
+
+SELECT MAX(age)
+FROM Users;
+
+SELECT COUNT(*)
+FROM Users;
+
+SELECT AVG(age)
+FROM Users;
+
+SELECT SUM(total)
+FROM SalaryTransferLogs;
+
 SELECT id, first_name, last_name 
 FROM Users
 WHERE middle_name IN (
@@ -230,3 +258,49 @@ UPDATE Users
 SET first_name = 'TEST'
 WHERE first_name LIKE "D%";
 
+SELECT DISTINCT u.first_name, u.last_name, stl.total
+FROM SalaryTransferLogs stl
+INNER JOIN Users u
+ON u.id = stl.user_id;
+
+SELECT DISTINCT u.first_name, u.last_name, stl.total
+FROM SalaryTransferLogs stl
+INNER JOIN Users u
+ON u.id = stl.user_id
+WHERE total < 100000 OR u.age < 20;
+
+SELECT DISTINCT u.first_name, u.last_name, stl.total
+FROM SalaryTransferLogs stl
+INNER JOIN Users u
+ON u.id = stl.user_id
+WHERE total < 100000 AND u.age < 25;
+
+SELECT DISTINCT u.first_name, u.last_name, stl.total
+FROM SalaryTransferLogs stl
+INNER JOIN Users u
+ON u.id = stl.user_id
+WHERE total BETWEEN  10000 AND 100000 AND u.age < 25;
+
+SELECT *
+FROM Users u 
+INNER JOIN UserPassports up 
+ON up.user_id = u.id 
+INNER JOIN UsersMartialStatus ums 
+ON ums.user_passport_id = up.id
+WHERE ums.status NOT IN ("MR");
+
+SELECT COUNT(*) AS Count_of_Engineers, SUM(total) AS Total_of_Salary, SUM(tax) AS Total_Of_Tax
+FROM SalaryTransferLogs stl 
+INNER JOIN UserWorkPositions uwp 
+ON uwp.user_id = stl.user_id 
+INNER JOIN WorkPositions wp 
+ON wp.id = uwp.work_position_id 
+WHERE wp.category = "engineer";
+
+SELECT COUNT(*) AS Count_of_QA_Engineers, SUM(total) AS Total_of_Salary, SUM(tax) AS Total_Of_Tax
+FROM SalaryTransferLogs stl 
+INNER JOIN UserWorkPositions uwp 
+ON uwp.user_id = stl.user_id 
+INNER JOIN WorkPositions wp 
+ON wp.id = uwp.work_position_id 
+WHERE wp.name LIKE "%QA%";
