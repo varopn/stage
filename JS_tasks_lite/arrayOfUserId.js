@@ -1,11 +1,11 @@
 function arrayOfUserId(users) {
-    let resulrArray = [];
+    let resultArray = [];
 
     for(let i = 0; i < users.length; i++) {
-      resulrArray.push(users[i].id);
+      resultArray.push(users[i].id);
     }
 
-    return resulrArray;
+    return resultArray;
 }
 
 let users = [{
