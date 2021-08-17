@@ -1,7 +1,8 @@
-// data for connection to database
 module.exports = {
   hostname: 'localhost',
   user: 'admin',
   password: '12345678',
-  database: 'Users'
+  database: 'Users',
+  dialect: "mysql",
+  host: "localhost"
 };
