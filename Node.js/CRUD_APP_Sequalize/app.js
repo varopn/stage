@@ -81,14 +81,17 @@ app.post("/users", (req, res) => {
       });
     };
 });
-
-     
+  
 app.get("/users", (req, res) => {
   User.findAll().then(users=>{
     console.log(users);
+
     if(users.length === 0){} {
+
       res.status(200).send({status: "we DON't HAVE USERS"});
+
     }
+
     res.status(200).send(users);
   }).catch(err=>console.log(err));
 });
