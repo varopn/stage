@@ -8,48 +8,87 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
+
   res.json({ message: "Home page" });
+
 });
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
+
   dialect: dbConfig.dialect,
   host: dbConfig.host,
   define: {
+
     timestamps: false
+
   }
+
 });
 
 const User = sequelize.define('User', {
+
   id : {
+
     type: Sequelize.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
+    primaryKey: true
+
   },
   name : {
+
     type: Sequelize.STRING
+
   },
   age : {
+
     type: Sequelize.INTEGER
+
   },
   additional_info: {
+
     type: Sequelize.STRING
+
   }
 });
 
 app.post("/users", (req, res) => {
-  User.create({
-    name: req.body.name,
-    age: req.body.age,
-    additional_info: req.body.additional_info
-  }).then((user)=>{
-    console.log(user);
-    res.status(201).send({user, status: "created"});
-  }).catch(err=>console.log(err));
+  if (!req.body) {
+
+    res.status(400).send(({status: "No body"}));
+
+  } else if (!req.body.name && !req.body.age) {
+
+    res.status(400).send(({status: "Not fully body"}));
+
+  } else {
+
+      User.create({
+
+        name: req.body.name,
+        age: req.body.age,
+        additional_info: req.body.additional_info
+
+      }).then((user)=>{
+
+        console.log(user);
+        res.status(201).send({user, status: "created"});
+
+      }).catch(err=> { 
+
+        console.log(err);
+        res.status(500).send(({status: "Error"}));
+
+      });
+    };
 });
+
      
 app.get("/users", (req, res) => {
   User.findAll().then(users=>{
     console.log(users);
+    if(users.length === 0){} {
+      res.status(200).send({status: "we DON't HAVE USERS"});
+    }
     res.status(200).send(users);
   }).catch(err=>console.log(err));
 });
@@ -64,13 +103,13 @@ app.put("/users/:id", (req, res) => {
     console.log(user)
   }).then(()=> {
     if(user === null) {
-      console.urlencoded("00");
+      console.log("00");
     }
     res.status(200).send({status: "Successful updated"});
   })
-  .catch(err=>{
+  .catch((err, user)=>{
     console.log(err);
-    if(user === null) {
+    if(!user) {
       res.status(404).send({status: "User is not existing"});
     }
     res.status(500).send({status: "Error updating user"});
@@ -83,12 +122,16 @@ app.get("/users/:id", (req, res) => {
     res.status(200).send(user);
   })
   .catch(err=>console.log(err));
+  res.status(404).send({status: "No such user"});
 });
 
 app.delete("/users/:id", (req, res) => {
   User.destroy(req.params.id).then(()=>{
     res.status(200).send({status: "Successful deleted"});
-  }).catch(err=>console.log(err));
+  }).catch(err => {
+    console.log(err);
+    res.status(404).send({status: "No such user"});
+  });
 });
 
 app.delete("/users", (req, res) => {
