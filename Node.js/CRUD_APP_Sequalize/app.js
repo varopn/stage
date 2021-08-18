@@ -54,11 +54,7 @@ const User = sequelize.define('User', {
 app.post("/users", (req, res) => {
   if (!req.body) {
 
-    res.status(400).send(({status: "No body"}));
-
-  } else if (!req.body.name && !req.body.age) {
-
-    res.status(400).send(({status: "Not fully body"}));
+    res.status(400).send(({status: "No fully body"}));
 
   } else {
 
@@ -71,12 +67,14 @@ app.post("/users", (req, res) => {
       }).then((user)=>{
 
         console.log(user);
-        res.status(201).send({user, status: "created"});
+        if(!user) {
+          res.status(500).send(({status: "Error"}));
+        }
 
+        res.status(200).send({user, status: "created"});
       }).catch(err=> { 
 
         console.log(err);
-        res.status(500).send(({status: "Error"}));
 
       });
     };
@@ -86,10 +84,8 @@ app.get("/users", (req, res) => {
   User.findAll().then(users=>{
     console.log(users);
 
-    if(users.length === 0){} {
-
+    if(users.length === 0) {
       res.status(200).send({status: "we DON't HAVE USERS"});
-
     }
 
     res.status(200).send(users);
@@ -97,49 +93,68 @@ app.get("/users", (req, res) => {
 });
 
 app.put("/users/:id", (req, res) => {
+
   User.update({
-    id: req.body.id,
+
     name: req.body.name,
     age: req.body.age,
     additional_info: req.body.additional_info
-  }, {where: {id: req.params.id}}).then((user) => {
-    console.log(user)
-  }).then(()=> {
-    if(user === null) {
-      console.log("00");
-    }
-    res.status(200).send({status: "Successful updated"});
-  })
-  .catch((err, user)=>{
-    console.log(err);
+
+  }, {where: {id: req.params.id}}).then((user)=> {
     if(!user) {
       res.status(404).send({status: "User is not existing"});
     }
-    res.status(500).send({status: "Error updating user"});
+    res.status(200).send({user, status: "Successful updated"});
+  })
+  .catch((err, user)=>{
+    console.log(err);
   });
 });
 
 app.get("/users/:id", (req, res) => {
   User.findByPk(req.params.id).then((user)=>{
+
     console.log(user);
-    res.status(200).send(user);
+
+    if(!user){
+
+      res.status(404).send({status: "No such user"});
+
+    }
+
+    res.status(200).send({user, status: "existing"});
   })
   .catch(err=>console.log(err));
-  res.status(404).send({status: "No such user"});
 });
 
 app.delete("/users/:id", (req, res) => {
-  User.destroy(req.params.id).then(()=>{
-    res.status(200).send({status: "Successful deleted"});
-  }).catch(err => {
-    console.log(err);
-    res.status(404).send({status: "No such user"});
-  });
+  User.findByPk(req.params.id).then((user)=>{
+
+    console.log(user);
+
+    if(!user) {
+      res.status(404).send({status: "No such user"});
+    }
+
+    User.destroy({where: {id: user.id}}).then(()=>{
+
+      res.status(200).send({status: "Successful deleted"});
+
+    }).catch(err => {
+
+      console.log(err);
+
+    });
+  })
+  .catch(err=>console.log(err));
 });
 
 app.delete("/users", (req, res) => {
+
   User.destroy({where: {}}).then(()=> {
+
     res.status(200).send({status: "why u deleted all records"});
+
   }).catch(err=>console.log(err));
 });
 
