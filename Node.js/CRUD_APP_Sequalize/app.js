@@ -8,9 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-
   res.json({ message: "Home page" });
-
 });
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
@@ -18,9 +16,7 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.passw
   dialect: dbConfig.dialect,
   host: dbConfig.host,
   define: {
-
     timestamps: false
-
   }
 
 });
@@ -106,7 +102,7 @@ app.put("/users/:id", (req, res) => {
     }
     res.status(200).send({user, status: "Successful updated"});
   })
-  .catch((err, user)=>{
+  .catch((err)=>{
     console.log(err);
   });
 });
@@ -160,8 +156,8 @@ app.delete("/users", (req, res) => {
 
 sequelize.sync().then(()=>{
     console.log("Successful connection to database");
+    app.listen(3001, function(){
+      console.log("Successful connection to server");
+    });
 }).catch(err=>console.log(err));
 
-app.listen(3001, function(){
-  console.log("Successful connection to server");
-});
