@@ -1,0 +1,27 @@
+<h1>All users</h1>
+<p><a href="/create" class="btn btn-success">Add new user</a></p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Country</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    {{#each users}}
+        <tr scope="row">
+            <td>{{this.name}}</td>
+            <td>{{this.age}}</td>
+            <td>{{this.country}}</td>
+            <td>{{this.email}}</td>
+            <td>
+                <a href="/edit/{{this.id}}" class="btn btn-primary" >Edit</a> |
+                <form action="delete/{{this.id}}" method="POST" style="display:inline;">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
