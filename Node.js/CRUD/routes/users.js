@@ -6,7 +6,9 @@ const services = require('../services/');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get("/", router.get("/users"));
+router.get("/", (req, res) => {
+  res.json({ message: "Home page" });
+});
 
 router.post("/users", async (req, res) => {
   if (!req.body) {
