@@ -1,6 +1,6 @@
-let numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 3, 4, 5];
 
-numbers.some = function(callback) {
+numbers.some = function (callback) {
   if (typeof callback !== 'function') {
     return undefined;
   }
