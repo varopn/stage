@@ -2,7 +2,7 @@ function sumOfMinDigitsInSubArrays(array) {
    let sumOfMin = 0;
    let sumOfMax = 0;
   
-   for (let subArray of testArray) {
+   for (let subArray of array) {
       sumOfMin += Math.min(...subArray);
       sumOfMax += Math.max(...subArray);
    }
