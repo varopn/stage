@@ -1,44 +1,44 @@
 function sumOfMinDigitsInSubArrays(array) {
-   let sumOfMin = 0;
-   let sumOfMax = 0;
-  
-   for (let subArray of testArray) {
-      sumOfMin += Math.min(...subArray);
-      sumOfMax += Math.max(...subArray);
-   }
+  let sumOfMin = 0;
+  let sumOfMax = 0;
 
-   return `Sum of minimum values is [${sumOfMin}], sum of vaximum values is [${sumOfMax}]`;
- }
+  for (const subArray of array) {
+    sumOfMin += Math.min(...subArray);
+    sumOfMax += Math.max(...subArray);
+  }
 
- function sumOfMinAndMax(array) {
-    let sumOfMin = 0;
-    let sumOfMax = 0;
+  return `Sum of minimum values is [${sumOfMin}], sum of vaximum values is [${sumOfMax}]`;
+}
 
-    for (let i = 0; i < array.length; i++) {
-       let min = array[i][0];
-       let max = array[i][0];
+function sumOfMinAndMax(array) {
+  let sumOfMin = 0;
+  let sumOfMax = 0;
 
-       for (let j = 0; j < array[i].length; j++) {
-          if(array[i][j] > max) {
-             max = array[i][j];
-          };
+  for (let i = 0; i < array.length; i++) {
+    let min = array[i][0];
+    let max = array[i][0];
 
-          if (array[i][j] < min) {
-             min = array[i][j];
-          };
-       }
+    for (let j = 0; j < array[i].length; j++) {
+      if (array[i][j] > max) {
+        max = array[i][j];
+      }
 
-       sumOfMin += min;
-       sumOfMax += max;
+      if (array[i][j] < min) {
+        min = array[i][j];
+      }
     }
 
-    return `Sum of minimum values is [${sumOfMin}], sum of vaximum values is [${sumOfMax}]`;
- }
+    sumOfMin += min;
+    sumOfMax += max;
+  }
 
-let testArray = ([
-   [1, 5, 2, 6, 16, -1, 0, 12],
-   [2, 9, -3, -5, -57, 120, 12],
-   [14, -20, -30, 4, 0, 16, 150]
+  return `Sum of minimum values is [${sumOfMin}], sum of vaximum values is [${sumOfMax}]`;
+}
+
+const testArray = ([
+  [1, 5, 2, 6, 16, -1, 0, 12],
+  [2, 9, -3, -5, -57, 120, 12],
+  [14, -20, -30, 4, 0, 16, 150],
 ]);
 
 console.log(sumOfMinDigitsInSubArrays(testArray));
