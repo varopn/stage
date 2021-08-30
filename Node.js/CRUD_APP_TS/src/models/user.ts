@@ -1,5 +1,5 @@
-import { table } from "console";
 import {Model, Column, Table, DataType} from "sequelize-typescript";
+import { sequelize } from "./index";
 
 @Table({
     timestamps: false,

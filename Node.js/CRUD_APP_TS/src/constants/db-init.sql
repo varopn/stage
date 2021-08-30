@@ -1,9 +1,0 @@
-CREATE DATABASE Users;
-USE Users;
-
-CREATE TABLE Users(
-id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(255),
-age INTEGER,
-additional_info VARCHAR(255)
-);

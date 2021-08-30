@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as dotenv from "dotenv";
-import {users} from "./routes/route"
-import {sequelize} from './instances/sequelize';
+import * as routes from "./routes"
+import {sequelize} from './models/index';
 
 const app = express();
 
@@ -13,7 +13,7 @@ if (!process.env.PORT) {
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
 
-app.use(users);
+app.use(routes.usersRoutes.users);
 
 (async () => {
     await sequelize.sync({force: false});

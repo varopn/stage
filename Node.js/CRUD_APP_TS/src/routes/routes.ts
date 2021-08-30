@@ -1,9 +1,8 @@
 import { Router, Request, Response } from "express";
-import { User } from "../models/user";
 import * as bodyParser from "body-parser"
-import {UserService} from "../service/service"
+import * as services from "../services/"
 
-export const users = Router();
+const users = Router();
 users.route('/api');
 
 users.use(bodyParser.json());
@@ -18,7 +17,7 @@ users.post("/api/users", async (req: Request, res: Response) => {
     res.status(400).send(({status: "No fully body"}));
     console.log(req.body.name);
   } else {
-    await UserService.createNewUser({ 
+    await services.userService.createNewUser({ 
       name: req.body.name,
       age: req.body.age,
       additional_info: req.body.additional_info
@@ -37,7 +36,7 @@ users.post("/api/users", async (req: Request, res: Response) => {
     
 users.get("/api/users", async (req: Request, res: Response) => {
     try {
-    await UserService.getUsers().then((users: any)=>{
+    await services.userService.getUsers().then((users: any)=>{
       console.log(users);
 
       if(users.length === 0) {
@@ -47,19 +46,19 @@ users.get("/api/users", async (req: Request, res: Response) => {
       res.status(200).send(users);
     })
 }
-catch{
-    console.log("wergwergwe");
+catch(err){
+    console.log(err);
 }
 });
   
 users.put("/api/users/:id", async (req: Request, res: Response) => {
-  await UserService.getByUserId(req.params.id).then(async (user)=>{
+  await services.userService.getByUserId(req.params.id).then(async (user)=>{
     console.log(user);
 
     if(!user) {
       res.status(404).send({status: "No such user"});
     } else {
-      await UserService.updateByUserId({
+      await services.userService.updateByUserId({
         name: req.body.name,
         age: req.body.age,
         additional_info: req.body.additional_info
@@ -78,7 +77,7 @@ users.put("/api/users/:id", async (req: Request, res: Response) => {
 });
   
 users.get("/api/users/:id", async (req: Request, res) => {
-    await UserService.getByUserId(req.params.id).then((user)=>{
+    await services.userService.getByUserId(req.params.id).then((user)=>{
       console.log(user);
   
       if(!user){
@@ -93,13 +92,13 @@ users.get("/api/users/:id", async (req: Request, res) => {
 });
   
 users.delete("/api/users/:id", async (req: Request, res: Response) => {
-    await UserService.getByUserId(req.params.id).then(async (user)=>{
+    await services.userService.getByUserId(req.params.id).then(async (user)=>{
       console.log(user);
   
       if(!user) {
         res.status(404).send({status: "No such user"});
       } else {
-        await UserService.deleteByUserId(req.params.id).then(()=>{
+        await services.userService.deleteByUserId(req.params.id).then(()=>{
           res.status(200).send({status: "Successful deleted"});
         }).catch((err: any) => {
           console.log(err);
@@ -112,3 +111,5 @@ users.delete("/api/users/:id", async (req: Request, res: Response) => {
       return res.status(500).send({status: "Server error"});
     });
 });
+
+export { users };

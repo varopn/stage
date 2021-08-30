@@ -1,7 +1,6 @@
 import { User } from '../models/user';
 
-export class UserService {
-  static getUsers = async () => {
+export const findAllUsers = async () => {
     try {
       let users = await User.findAll();
       return users;
@@ -10,7 +9,7 @@ export class UserService {
       throw err;
     }
 };  
-  static getByUserId = async (userId: string) => {
+export const findByUserId = async (userId: string) => {
     try {
       let user = await User.findByPk(userId);
       return user;
@@ -19,7 +18,7 @@ export class UserService {
       throw err;
     }
 };
-  static createNewUser = async (newUser: any) => {
+export const createNewUser = async (newUser: any) => {
     try {
       let createdUser = await User.create(newUser);
 
@@ -29,7 +28,7 @@ export class UserService {
       throw err;
     }
 };
-  static updateByUserId = async (user: any, userId: string) => {
+export const updateByUserId = async (user: any, userId: string) => {
     try {
       let { name, age, additional_info } = user;
       let updatedUser = await User.update({
@@ -44,7 +43,8 @@ export class UserService {
         throw err;
     }
 };
-  static deleteByUserId = async (userId: string) => {
+
+export const deleteByUserId = async (userId: string) => {
     try {
         let user = await User.destroy({where: {id: userId}})
         return user
@@ -53,4 +53,3 @@ export class UserService {
         throw err;
     }
 };
-}
