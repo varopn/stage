@@ -9,7 +9,7 @@ users.use(bodyParser.json());
 users.use(bodyParser.urlencoded({ extended: true }));
 
 users.get("/api", (req: Request, res: Response) => {
-  res.json({ message: "Home page" });
+  res.json({ message: "Home page" }).status(200);
 });
 
 users.post("/api/users", async (req: Request, res: Response) => {
