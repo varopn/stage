@@ -9,7 +9,3 @@ export const sequelize = new Sequelize("Users", "admin", "12345678", {
   },
   models: [User],
 });
-
-
-
-
