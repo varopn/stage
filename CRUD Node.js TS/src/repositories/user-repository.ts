@@ -43,7 +43,6 @@ export const updateByUserId = async (user: any, userId: string) => {
         throw err;
     }
 };
-
 export const deleteByUserId = async (userId: string) => {
     try {
         let user = await User.destroy({where: {id: userId}})
