@@ -1,6 +1,6 @@
 import * as faker from 'faker';
-import {userService} from '../services';
-import {sequelize} from '../models/index';
+import {userRepository} from '../../../repositories';
+import {sequelize} from '../../../models/index';
 let user: any;
 
 beforeAll(async () => {
@@ -19,7 +19,7 @@ beforeEach(async () => {
     });
     const additional_info = faker.internet.email();
 
-    user = await userService.createNewUser({
+    user = await userRepository.createNewUser({
         name: name,
         age: age,
         additional_info: additional_info
@@ -32,7 +32,7 @@ afterEach(async () => {
 
 describe('Repository testing', () => {
   it(`should create user`, async () => {
-    const fetched = await userService.getByUserId(user.id);
+    const fetched = await userRepository.findByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched!.name).toBe(user.name);
@@ -41,7 +41,7 @@ describe('Repository testing', () => {
   })
 
   it(`should find all users`, async () => {
-    const fetched = await userService.getUsers();
+    const fetched = await userRepository.findAllUsers();
     fetched.reverse();
 
     expect(fetched).not.toBeNull();
@@ -52,7 +52,7 @@ describe('Repository testing', () => {
   })
 
   it(`should find user by users id's`, async () => {
-    const fetched = await userService.getByUserId(user.id);
+    const fetched = await userRepository.findByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched!.name).toBe(user.name);
@@ -67,13 +67,13 @@ describe('Repository testing', () => {
         'max': 100,
       })
     const updatedAdditional_info = faker.name.firstName();
-    const fetched = await userService.updateByUserId({
+    const fetched = await userRepository.updateByUserId({
         name: updatedName,
         age: updatedAge,
         additional_info: updatedAdditional_info,
     }, user.id);
 
-    const userFind = await userService.getByUserId(user.id);
+    const userFind = await userRepository.findByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(userFind).not.toEqual(user);
@@ -83,7 +83,7 @@ describe('Repository testing', () => {
   })
 
   it(`should delete user by users's id`, async () => {
-    const fetched = await userService.deleteByUserId(user.id);
+    const fetched = await userRepository.deleteByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched).not.toEqual(user);

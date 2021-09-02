@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1630506889493" clover="3.2.0">
-  <project timestamp="1630506889493" name="All files">
+<coverage generated="1630575872788" clover="3.2.0">
+  <project timestamp="1630575872788" name="All files">
     <metrics statements="64" coveredstatements="55" conditionals="0" coveredconditionals="0" methods="20" coveredmethods="20" elements="84" coveredelements="75" complexity="0" loc="64" ncloc="64" packages="3" files="6" classes="6"/>
     <package name="models">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.ts" path="/home/dev-qa/stage/CRUD Node.js TS/src/models/index.ts">
+      <file name="index.ts" path="/home/dev-qa/Desktop/projects/stage/CRUD Node.js TS/src/models/index.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
       </file>
-      <file name="user.ts" path="/home/dev-qa/stage/CRUD Node.js TS/src/models/user.ts">
+      <file name="user.ts" path="/home/dev-qa/Desktop/projects/stage/CRUD Node.js TS/src/models/user.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="5" type="stmt"/>
-        <line num="7" count="5" type="stmt"/>
-        <line num="15" count="5" type="stmt"/>
-        <line num="20" count="5" type="stmt"/>
-        <line num="25" count="5" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="30" count="6" type="stmt"/>
       </file>
     </package>
     <package name="repositories">
       <metrics statements="29" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
-      <file name="index.ts" path="/home/dev-qa/stage/CRUD Node.js TS/src/repositories/index.ts">
+      <file name="index.ts" path="/home/dev-qa/Desktop/projects/stage/CRUD Node.js TS/src/repositories/index.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
       </file>
-      <file name="user-repository.ts" path="/home/dev-qa/stage/CRUD Node.js TS/src/repositories/user-repository.ts">
+      <file name="user-repository.ts" path="/home/dev-qa/Desktop/projects/stage/CRUD Node.js TS/src/repositories/user-repository.ts">
         <metrics statements="27" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
         <line num="1" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
@@ -60,12 +60,12 @@
     </package>
     <package name="services">
       <metrics statements="26" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
-      <file name="index.ts" path="/home/dev-qa/stage/CRUD Node.js TS/src/services/index.ts">
+      <file name="index.ts" path="/home/dev-qa/Desktop/projects/stage/CRUD Node.js TS/src/services/index.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
       </file>
-      <file name="user-service.ts" path="/home/dev-qa/stage/CRUD Node.js TS/src/services/user-service.ts">
+      <file name="user-service.ts" path="/home/dev-qa/Desktop/projects/stage/CRUD Node.js TS/src/services/user-service.ts">
         <metrics statements="24" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>

@@ -1,7 +1,7 @@
 import * as faker from 'faker';
-import {userRepository} from '../repositories';
-import {sequelize} from '../models/index';
-let user: any;
+import {User} from '../../../models/user';
+import {sequelize} from '../../../models/index';
+let user: User;
 
 beforeAll(async () => {
   await sequelize.sync({force: false});
@@ -19,20 +19,20 @@ beforeEach(async () => {
     });
     const additional_info = faker.internet.email();
 
-    user = await userRepository.createNewUser({
+    user = await User.create({
         name: name,
         age: age,
         additional_info: additional_info
-    });
+    } as User);
 });
 
 afterEach(async () => {
     await user.destroy();
 });
 
-describe('Repository testing', () => {
+describe('Model testing', () => {
   it(`should create user`, async () => {
-    const fetched = await userRepository.findByUserId(user.id);
+    const fetched = await User.findByPk(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched!.name).toBe(user.name);
@@ -41,7 +41,7 @@ describe('Repository testing', () => {
   })
 
   it(`should find all users`, async () => {
-    const fetched = await userRepository.findAllUsers();
+    const fetched = await User.findAll();
     fetched.reverse();
 
     expect(fetched).not.toBeNull();
@@ -52,7 +52,7 @@ describe('Repository testing', () => {
   })
 
   it(`should find user by users id's`, async () => {
-    const fetched = await userRepository.findByUserId(user.id);
+    const fetched = await User.findByPk(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched!.name).toBe(user.name);
@@ -67,13 +67,13 @@ describe('Repository testing', () => {
         'max': 100,
       })
     const updatedAdditional_info = faker.name.firstName();
-    const fetched = await userRepository.updateByUserId({
+    const fetched = await User.update({
         name: updatedName,
         age: updatedAge,
         additional_info: updatedAdditional_info,
-    }, user.id);
+    }, {where: {id: user.id}});
 
-    const userFind = await userRepository.findByUserId(user.id);
+    const userFind = await User.findByPk(user.id);
 
     expect(fetched).not.toBeNull();
     expect(userFind).not.toEqual(user);
@@ -83,10 +83,11 @@ describe('Repository testing', () => {
   })
 
   it(`should delete user by users's id`, async () => {
-    const fetched = await userRepository.deleteByUserId(user.id);
+    const fetched = await User.destroy({where: {id: user.id}});
 
     expect(fetched).not.toBeNull();
     expect(fetched).not.toEqual(user);
 
   })
 })
+

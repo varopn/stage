@@ -1,11 +1,10 @@
-import { User } from "../models/user";
-import {userRepository} from "../repositories";
+import { User } from "../../../models/user";
 
 test("should return empty array", async () => {
   const spy = jest
-    .spyOn(userRepository, "findAllUsers")
+    .spyOn(User, "findAll")
     .mockResolvedValue([]);
-  let users = await userRepository.findAllUsers();
+  let users = await User.findAll();
   expect(users).toEqual([]);
   expect(spy).toHaveBeenCalledWith();
   expect(spy).toHaveBeenCalledTimes(1);
@@ -18,9 +17,9 @@ test("should return user list", async () => {
     age: 23
   },] as User[];
   const spy = jest
-    .spyOn(userRepository, "findAllUsers")
+    .spyOn(User, "findAll")
     .mockResolvedValue(userList);
-  const users = await userRepository.findAllUsers();
+  const users = await User.findAll();
   expect(users).toEqual(userList);
   expect(spy).toHaveBeenCalledWith();
   expect(spy).toHaveBeenCalledTimes(1);
@@ -33,9 +32,9 @@ test("should create user", async () => {
       age: 23
     } as User;
   const spy = jest
-    .spyOn(userRepository, "createNewUser")
+    .spyOn(User, "create")
     .mockResolvedValue(user);
-  const userCrerated = await userRepository.createNewUser(user);
+  const userCrerated = await User.create(user);
   expect(userCrerated).toEqual(user);
   expect(spy).toHaveBeenCalledWith(user);
   expect(spy).toHaveBeenCalledTimes(1);
@@ -49,10 +48,25 @@ test("should update user", async () => {
   }] as User[];
   const userId = 1;
 const spy = jest
-  .spyOn(userRepository, "updateByUserId")
+  .spyOn(User, "update")
   .mockResolvedValue([userId, user]);
-const userCrerated = await userRepository.updateByUserId(user,`${userId}`);
+const userCrerated = await User.update(user[0], {where: {id: userId}});
 expect(userCrerated).toEqual([userId, user]);
 expect(spy).toHaveBeenCalledTimes(1);
 spy.mockRestore();
 });
+
+test("should delete user", async () => {
+    const user = [{
+      name: "wfwf",
+      age: 23
+    }] as User[];
+    const userId = 1;
+  const spy = jest
+    .spyOn(User, "destroy")
+    .mockResolvedValue(userId);
+  const userCrerated = await User.destroy({where: {id: userId}});
+  expect(userCrerated).toEqual(userId);
+  expect(spy).toHaveBeenCalledTimes(1);
+  spy.mockRestore();
+  });

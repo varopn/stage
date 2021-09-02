@@ -1,7 +1,7 @@
 import * as faker from 'faker';
-import {User} from '../models/user';
-import {sequelize} from '../models/index';
-let user: User;
+import {userService} from '../../../services';
+import {sequelize} from '../../../models/index';
+let user: any;
 
 beforeAll(async () => {
   await sequelize.sync({force: false});
@@ -19,20 +19,20 @@ beforeEach(async () => {
     });
     const additional_info = faker.internet.email();
 
-    user = await User.create({
+    user = await userService.createNewUser({
         name: name,
         age: age,
         additional_info: additional_info
-    } as User);
+    });
 });
 
 afterEach(async () => {
     await user.destroy();
 });
 
-describe('Model testing', () => {
+describe('Repository testing', () => {
   it(`should create user`, async () => {
-    const fetched = await User.findByPk(user.id);
+    const fetched = await userService.getByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched!.name).toBe(user.name);
@@ -41,7 +41,7 @@ describe('Model testing', () => {
   })
 
   it(`should find all users`, async () => {
-    const fetched = await User.findAll();
+    const fetched = await userService.getUsers();
     fetched.reverse();
 
     expect(fetched).not.toBeNull();
@@ -52,7 +52,7 @@ describe('Model testing', () => {
   })
 
   it(`should find user by users id's`, async () => {
-    const fetched = await User.findByPk(user.id);
+    const fetched = await userService.getByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched!.name).toBe(user.name);
@@ -67,13 +67,13 @@ describe('Model testing', () => {
         'max': 100,
       })
     const updatedAdditional_info = faker.name.firstName();
-    const fetched = await User.update({
+    const fetched = await userService.updateByUserId({
         name: updatedName,
         age: updatedAge,
         additional_info: updatedAdditional_info,
-    }, {where: {id: user.id}});
+    }, user.id);
 
-    const userFind = await User.findByPk(user.id);
+    const userFind = await userService.getByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(userFind).not.toEqual(user);
@@ -83,11 +83,10 @@ describe('Model testing', () => {
   })
 
   it(`should delete user by users's id`, async () => {
-    const fetched = await User.destroy({where: {id: user.id}});
+    const fetched = await userService.deleteByUserId(user.id);
 
     expect(fetched).not.toBeNull();
     expect(fetched).not.toEqual(user);
 
   })
 })
-
