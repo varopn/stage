@@ -3,12 +3,13 @@ import * as dotenv from "dotenv";
 import * as routes from "./routes"
 import {sequelize} from './models/index';
 
-const app = express();
+
+export const app = express();
 
 dotenv.config();
 
 if (!process.env.PORT) {
-    process.exit(1);
+    process.env.PORT = '3001';
 }
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
