@@ -1,11 +1,11 @@
 function arrayOfUserIdByMap(users) {
-  return users.map(function (user) { return user.id; });
+  return users.map((user) => user.id);
 }
 
 function arrayOfUserIdByForEach(users) {
   const arrayOfUserId = [];
 
-  users.forEach(user => arrayOfUserId.push(user.id));
+  users.forEach((user) => arrayOfUserId.push(user.id));
 
   return arrayOfUserId;
 }

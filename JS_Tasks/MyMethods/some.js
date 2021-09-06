@@ -14,4 +14,4 @@ numbers.some = function (callback) {
   return false;
 };
 
-console.log(numbers.some(element => element < 2));
+console.log(numbers.some((element) => element < 2));

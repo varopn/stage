@@ -1,11 +1,9 @@
 import { User } from "../../../models/user";
-import {userRepository} from "../../../repositories";
+import { userRepository } from "../../../repositories";
 
 test("should return empty array", async () => {
-  const spy = jest
-    .spyOn(userRepository, "findAllUsers")
-    .mockResolvedValue([]);
-  let users = await userRepository.findAllUsers();
+  const spy = jest.spyOn(userRepository, "findAllUsers").mockResolvedValue([]);
+  const users = await userRepository.findAllUsers();
   expect(users).toEqual([]);
   expect(spy).toHaveBeenCalledWith();
   expect(spy).toHaveBeenCalledTimes(1);
@@ -13,10 +11,12 @@ test("should return empty array", async () => {
 });
 
 test("should return user list", async () => {
-  const userList = [{
-    name: "wfwf",
-    age: 23
-  },] as User[];
+  const userList = [
+    {
+      name: "wfwf",
+      age: 23,
+    },
+  ] as User[];
   const spy = jest
     .spyOn(userRepository, "findAllUsers")
     .mockResolvedValue(userList);
@@ -28,10 +28,10 @@ test("should return user list", async () => {
 });
 
 test("should create user", async () => {
-    const user = {
-      name: "wfwf",
-      age: 23
-    } as User;
+  const user = {
+    name: "wfwf",
+    age: 23,
+  } as User;
   const spy = jest
     .spyOn(userRepository, "createNewUser")
     .mockResolvedValue(user);
@@ -43,31 +43,35 @@ test("should create user", async () => {
 });
 
 test("should update user", async () => {
-  const user = [{
-    name: "wfwf",
-    age: 23
-  }] as User[];
+  const user = [
+    {
+      name: "wfwf",
+      age: 23,
+    },
+  ] as User[];
   const userId = 1;
-const spy = jest
-  .spyOn(userRepository, "updateByUserId")
-  .mockResolvedValue([userId, user]);
-const userCrerated = await userRepository.updateByUserId(user,`${userId}`);
-expect(userCrerated).toEqual([userId, user]);
-expect(spy).toHaveBeenCalledTimes(1);
-spy.mockRestore();
+  const spy = jest
+    .spyOn(userRepository, "updateByUserId")
+    .mockResolvedValue([userId, user]);
+  const userCrerated = await userRepository.updateByUserId(user, `${userId}`);
+  expect(userCrerated).toEqual([userId, user]);
+  expect(spy).toHaveBeenCalledTimes(1);
+  spy.mockRestore();
 });
 
 test("should delete user", async () => {
-  const user = [{
-    name: "wfwf",
-    age: 23
-  }] as User[];
+  const user = [
+    {
+      name: "wfwf",
+      age: 23,
+    },
+  ] as User[];
   const userId = 1;
-const spy = jest
-  .spyOn(userRepository, "deleteByUserId")
-  .mockResolvedValue(userId);
-const userCrerated = await userRepository.deleteByUserId(`${userId}`);
-expect(userCrerated).toEqual(userId);
-expect(spy).toHaveBeenCalledTimes(1);
-spy.mockRestore();
+  const spy = jest
+    .spyOn(userRepository, "deleteByUserId")
+    .mockResolvedValue(userId);
+  const userCrerated = await userRepository.deleteByUserId(`${userId}`);
+  expect(userCrerated).toEqual(userId);
+  expect(spy).toHaveBeenCalledTimes(1);
+  spy.mockRestore();
 });

@@ -14,4 +14,4 @@ numbers.findIndex = function (callback) {
   return -1;
 };
 
-console.log(numbers.findIndex(element => element < 0));
+console.log(numbers.findIndex((element) => element < 0));

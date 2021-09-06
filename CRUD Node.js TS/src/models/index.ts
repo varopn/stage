@@ -1,11 +1,13 @@
-import {Sequelize} from 'sequelize-typescript';
-import {User} from "./user"
+import { Sequelize } from "sequelize-typescript";
+import { User } from "./user";
 
-export const sequelize = new Sequelize("Users", "admin", "12345678", {
+const sequelize = new Sequelize("Users", "admin", "12345678", {
   dialect: "mysql",
   host: "localhost",
   define: {
-    timestamps: false
+    timestamps: false,
   },
   models: [User],
 });
+
+export { sequelize };

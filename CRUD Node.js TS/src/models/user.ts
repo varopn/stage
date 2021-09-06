@@ -1,16 +1,12 @@
-import {Model, Column, Table, DataType} from "sequelize-typescript";
-import { sequelize } from "./index";
+import { Model, Column, Table, DataType } from "sequelize-typescript";
 
-@Table({
-    timestamps: false,
-})
-export class User extends Model<User> {
-
+@Table({ timestamps: false })
+class User extends Model<User> {
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false
+    allowNull: false,
   })
   id?: number;
 
@@ -29,3 +25,5 @@ export class User extends Model<User> {
   })
   additional_info?: string;
 }
+
+export { User };

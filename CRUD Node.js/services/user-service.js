@@ -1,62 +1,42 @@
 let repositories = null;
 
 const getUsers = async () => {
-    try {
-        let users = await repositories.userRepository.findAllUsers();
-        return users;
-    }
-    catch(err) {
-        throw err;
-    }
+  const users = await repositories.userRepository.findAllUsers();
+
+  return users;
 };
 
 const getByUserId = async (userId) => {
-    try {
-        let user = await repositories.userRepository.findByUserId(userId);
-        return user;
-    }
-    catch(err){
-        throw err
-    }
+  const user = await repositories.userRepository.findByUserId(userId);
+
+  return user;
 };
 
 const createNewUser = async (newUser) => {
-    try {
-        let createdUser = await repositories.userRepository.createNewUser(newUser);
-        return createdUser;
-    }
-    catch(err){
-        throw err;
-    }
+  const createdUser = await repositories.userRepository.createNewUser(newUser);
+
+  return createdUser;
 };
 
-const updateByUserId = async (user,userId) => {
-    try {
-        let updatedUser = await repositories.userRepository.updateByUserId(user, userId);
-        return updatedUser;  
-    }
-    catch(err){
-        throw err;
-    }  
+const updateByUserId = async (user, userId) => {
+  const updatedUser = await repositories.userRepository.updateByUserId(user, userId);
+
+  return updatedUser;
 };
 
 const deleteByUserId = async (userId) => {
-    try {
-        let user = await repositories.userRepository.deleteByUserId(userId)
-        return user;
-    }
-    catch(err){
-        throw err;
-    }  
+  const user = await repositories.userRepository.deleteByUserId(userId);
+
+  return user;
 };
 
 module.exports = (rep) => {
-    repositories = rep;
-    return {
-        getUsers,
-        getByUserId,
-        createNewUser,
-        updateByUserId,
-        deleteByUserId,
-    };
+  repositories = rep;
+  return {
+    getUsers,
+    getByUserId,
+    createNewUser,
+    updateByUserId,
+    deleteByUserId,
+  };
 };

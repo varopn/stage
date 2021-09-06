@@ -1,5 +1,5 @@
 function filteringByArrayOfIds(users, arrayOfIds) {
-  return users.filter(user => arrayOfIds.some((element) => element === user.id));
+  return users.filter((user) => arrayOfIds.some((element) => element === user.id));
 }
 
 const arrayOfIds = [1, 4, 7];

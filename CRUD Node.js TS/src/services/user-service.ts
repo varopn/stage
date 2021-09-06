@@ -1,47 +1,31 @@
-import {userRepository} from '../repositories'
+import { userRepository } from "../repositories";
 
 export const getUsers = async () => {
-  let users = await userRepository.findAllUsers();
-  
+  const users = await userRepository.findAllUsers();
+
   return users;
 };
 
 export const getByUserId = async (userId: string) => {
-    try {
-        let user = await userRepository.findByUserId(userId);
-        return user;
-    }
-    catch(err){
-        throw err
-    }
+  const user = await userRepository.findByUserId(userId);
+
+  return user;
 };
 
 export const createNewUser = async (newUser: any) => {
-    try {
-        let createdUser = await userRepository.createNewUser(newUser);
-        return createdUser;
-    }
-    catch(err){
-        throw err;
-    }
+  const createdUser = await userRepository.createNewUser(newUser);
+
+  return createdUser;
 };
 
-export const updateByUserId = async (user: any,userId: string) => {
-    try {
-        let updatedUser = await userRepository.updateByUserId(user, userId);
-        return updatedUser;  
-    }
-    catch(err){
-        throw err;
-    }  
+export const updateByUserId = async (user: any, userId: string) => {
+  const updatedUser = await userRepository.updateByUserId(user, userId);
+
+  return updatedUser;
 };
 
 export const deleteByUserId = async (userId: string) => {
-    try {
-        let user = await userRepository.deleteByUserId(userId)
-        return user;
-    }
-    catch(err){
-        throw err;
-    }  
+  const user = await userRepository.deleteByUserId(userId);
+
+  return user;
 };

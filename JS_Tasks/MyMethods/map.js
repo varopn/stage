@@ -14,4 +14,4 @@ numbers.map = function (callback) {
   return resultArray;
 };
 
-console.log(numbers.map(number => number * 2));
+console.log(numbers.map((number) => number * 2));

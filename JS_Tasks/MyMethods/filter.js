@@ -16,4 +16,4 @@ numbers.filter = function (callback) {
   return resultArray;
 };
 
-console.log(numbers.filter(number => number > 2));
+console.log(numbers.filter((number) => number > 2));

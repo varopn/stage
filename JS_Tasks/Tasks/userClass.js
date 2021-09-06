@@ -29,7 +29,7 @@ class User {
     this._age = age + 1;
   }
 
-  getUserData () {
+  getUserData() {
     return `${this._name} from ${this._country} wit age ${this._age}`;
   }
 }

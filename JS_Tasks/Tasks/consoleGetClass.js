@@ -17,13 +17,13 @@ class User {
     return this._country;
   }
 
-  getUserData (){
+  getUserData() {
     return `${this._name} from ${this._country} wit age ${this._age}`;
   }
 }
 
 const user = new User('John', 32, 'USA');
 console.log(user.getUserData());
-console.log('User name is ' + user.name);
-console.log('User age is ' + user.age);
-console.log('User country is ' + user.country);
+console.log(`User name is ${user.name}`);
+console.log(`User age is ${user.age}`);
+console.log(`User country is ${user.country}`);

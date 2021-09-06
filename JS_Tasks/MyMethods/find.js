@@ -14,4 +14,4 @@ numbers.findIndex = function (callback) {
   return undefined;
 };
 
-console.log(numbers.find(element => element < 2));
+console.log(numbers.find((element) => element < 2));
