@@ -229,7 +229,7 @@ WHERE middle_name IN (
   SELECT middle_name
   FROM Users 
   WHERE middle_name LIKE "B%");
- 
+
 SELECT id, first_name, last_name 
 FROM Users
 WHERE age > (
