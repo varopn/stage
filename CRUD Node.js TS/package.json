@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "test": "jest --coverage",
+    "test": "jest --coverage --forceExit",
     "test:watch": "jest --coverage --watchAll",
-    "test:api": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/test/integration/index.test.ts'",
+    "test:api": "jest ./src/test/integration --no-cache --runInBand --forceExit ",
     "build": "tsc",
     "build:watch": "onchange 'src/**/*.ts' -- npm run build",
     "view:coverage": "serve coverage/lcov-report",

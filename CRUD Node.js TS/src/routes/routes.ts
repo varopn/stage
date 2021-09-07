@@ -55,8 +55,6 @@ users.put("/api/users/:id", async (req: Request, res: Response) => {
   await services.userService
     .getByUserId(req.params.id)
     .then(async (user) => {
-      console.log(user);
-
       if (!user) {
         res.status(404).send({ status: "No such user" });
       } else {
@@ -73,7 +71,6 @@ users.put("/api/users/:id", async (req: Request, res: Response) => {
             res.status(200).send({ status: "Successful updated" });
           })
           .catch((err: any) => {
-            console.log(err);
             return res.status(500).send({ status: "Server error" });
           });
       }
@@ -88,7 +85,6 @@ users.get("/api/users/:id", async (req: Request, res) => {
   await services.userService
     .getByUserId(req.params.id)
     .then((user) => {
-      console.log(user);
 
       if (!user) {
         res.status(404).send({ status: "No such user" });
@@ -112,6 +108,7 @@ users.delete("/api/users/:id", async (req: Request, res: Response) => {
           .then(() => {
             res.status(200).send({ status: "Successful deleted" });
           })
+          /* istanbul ignore next */
           .catch((err: any) => {
             console.log(err);
             return res.status(500).send({ status: "Server error" });
