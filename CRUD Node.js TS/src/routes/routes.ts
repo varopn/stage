@@ -108,7 +108,6 @@ users.delete("/api/users/:id", async (req: Request, res: Response) => {
           .then(() => {
             res.status(200).send({ status: "Successful deleted" });
           })
-          /* istanbul ignore next */
           .catch((err: any) => {
             console.log(err);
             return res.status(500).send({ status: "Server error" });
