@@ -1,6 +1,5 @@
 import chai = require("chai");
 import chaiHttp = require("chai-http");
-import { not } from "sequelize/types/lib/operators";
 import { app } from "../../index";
 
 const { expect } = require("chai");
@@ -39,8 +38,8 @@ const existingUserId = 8;
 describe("Crud api integration tests", () => {
   describe("Positive test", () => {
     it("should get hello message on home page", async () => {
-      const newUser = await request(app)
-        .get("/api");
+      const newUser = await request(app).get("/api");
+
       expect(newUser.statusCode).eq(200);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("message");
@@ -51,6 +50,7 @@ describe("Crud api integration tests", () => {
       const newUser = await request(app)
         .post("/api/users")
         .send(newUserAssertion);
+
       expect(newUser.statusCode).eq(201);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("user");
@@ -60,9 +60,7 @@ describe("Crud api integration tests", () => {
     });
 
     it("should get all users", async () => {
-      await request(app)
-        .post("/api/users")
-        .send(newUserAssertion);
+      await request(app).post("/api/users").send(newUserAssertion);
 
       const userList = await request(app).get("/api/users");
 
@@ -70,13 +68,16 @@ describe("Crud api integration tests", () => {
       userList.body.reverse();
       expect(userList.body[0].name).eq(newUserAssertion.name);
       expect(userList.body[0].age).eq(newUserAssertion.age);
-      expect(userList.body[0].additional_info).eq(newUserAssertion.additional_info);
+      expect(userList.body[0].additional_info).eq(
+        newUserAssertion.additional_info
+      );
 
       await request(app).delete(`/api/users/${userList.body[0].id}`);
     });
 
     it("should get user by id with valid data", async () => {
-      const newUser = await request(app).get(`/api/users/${8}`);
+      const newUser = await request(app).get(`/api/users/${existingUserId}`);
+
       expect(newUser.statusCode).eq(200);
     });
 
@@ -84,6 +85,7 @@ describe("Crud api integration tests", () => {
       const newUser = await request(app)
         .put("/api/users/8")
         .send(newUserAssertion);
+
       expect(newUser.statusCode).eq(200);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -91,15 +93,15 @@ describe("Crud api integration tests", () => {
 
     it("should delete user by id with valid data", async () => {
       const newUser = await request(app).get(`/api/users/${8}`);
+
       expect(newUser.statusCode).eq(200);
     });
   });
 
   describe("Negative test", () => {
     it("should not create a user with empty data", async () => {
-      const newUser = await request(app)
-        .post("/api/users")
-        .send(emptyUser);
+      const newUser = await request(app).post("/api/users").send(emptyUser);
+
       expect(newUser.statusCode).eq(400);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -107,9 +109,8 @@ describe("Crud api integration tests", () => {
     });
 
     it("should not create a user with not fully data", async () => {
-      const newUser = await request(app)
-        .post("/api/users")
-        .send(notFullyUser1);
+      const newUser = await request(app).post("/api/users").send(notFullyUser1);
+
       expect(newUser.statusCode).eq(400);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -117,9 +118,8 @@ describe("Crud api integration tests", () => {
     });
 
     it("should not create a user with not fully data", async () => {
-      const newUser = await request(app)
-        .post("/api/users")
-        .send(notFullyUser2);
+      const newUser = await request(app).post("/api/users").send(notFullyUser2);
+
       expect(newUser.statusCode).eq(400);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -127,9 +127,8 @@ describe("Crud api integration tests", () => {
     });
 
     it("should not create a user with not fully data", async () => {
-      const newUser = await request(app)
-        .post("/api/users")
-        .send(notFullyUser3);
+      const newUser = await request(app).post("/api/users").send(notFullyUser3);
+
       expect(newUser.statusCode).eq(400);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -137,8 +136,8 @@ describe("Crud api integration tests", () => {
     });
 
     it("should get error message when getting not existing user", async () => {
-      const newUser = await request(app)
-        .get("/api/users/" + notExistingUserId);
+      const newUser = await request(app).get(`/api/users/${notExistingUserId}`);
+
       expect(newUser.statusCode).eq(404);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -146,8 +145,10 @@ describe("Crud api integration tests", () => {
     });
 
     it("should get error message when deleting not existing user", async () => {
-      const newUser = await request(app)
-        .delete("/api/users/" + notExistingUserId);
+      const newUser = await request(app).delete(
+        `/api/users/${notExistingUserId}`
+      );
+
       expect(newUser.statusCode).eq(404);
       expect(newUser.body).should.be.a("object");
       expect(newUser.body).to.have.property("status");
@@ -156,7 +157,7 @@ describe("Crud api integration tests", () => {
 
     it("should get error message when updating not existing user", async () => {
       const newUser = await request(app)
-        .put("/api/users/" + notExistingUserId)
+        .put(`/api/users/${notExistingUserId}`)
         .send(newUserAssertion);
 
       expect(newUser.statusCode).eq(404);
