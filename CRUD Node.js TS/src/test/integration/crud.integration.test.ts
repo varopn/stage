@@ -7,12 +7,16 @@ const request = require("supertest");
 
 chai.should();
 
-chai.use(chaiHttp);
-
 const newUserAssertion = {
   name: "IntNum1",
   age: 23,
   additional_info: "qwerty123",
+};
+
+const newUserAssertionUpdate = {
+  name: 'I',
+  age: 0,
+  additional_info: '1',
 };
 
 const emptyUser = {};
@@ -33,17 +37,15 @@ const notFullyUser3 = {
 
 const notExistingUserId = 1;
 
-const existingUserId = 8;
-
 describe("Crud api integration tests", () => {
   describe("Positive test", () => {
     it("should get hello message on home page", async () => {
-      const newUser = await request(app).get("/api");
+      const hello = await request(app).get("/api");
 
-      expect(newUser.statusCode).eq(200);
-      expect(newUser.body).should.be.a("object");
-      expect(newUser.body).to.have.property("message");
-      expect(newUser.body.message).eq("Home page");
+      expect(hello.statusCode).eq(200);
+      expect(hello.body).should.be.a("object");
+      expect(hello.body).to.have.property("message");
+      expect(hello.body.message).eq("Home page");
     });
 
     it("should create a user with valid data", async () => {
@@ -76,25 +78,39 @@ describe("Crud api integration tests", () => {
     });
 
     it("should get user by id with valid data", async () => {
-      const newUser = await request(app).get(`/api/users/${existingUserId}`);
+      const newUser = await request(app).post("/api/users").send(newUserAssertion);
+      const currentUser = await request(app).get(`/api/users/${newUser.body.user.id}`);
 
-      expect(newUser.statusCode).eq(200);
+      expect(currentUser.statusCode).eq(200);
+
+      await request(app).delete(`/api/users/${newUser.body.user.id}`);
     });
 
     it("should update user with valid data", async () => {
-      const newUser = await request(app)
-        .put("/api/users/8")
-        .send(newUserAssertion);
+      const newUser = await request(app).post(`/api/users`).send(newUserAssertion);
+      const result = await await request(app).put(`/api/users/${newUser.body.user.id}`).send(newUserAssertionUpdate);
 
-      expect(newUser.statusCode).eq(200);
-      expect(newUser.body).should.be.a("object");
-      expect(newUser.body).to.have.property("status");
+      expect(result.statusCode).eq(200);
+      expect(result.body).should.be.a('object');
+      expect(result.body).to.have.property('status');
+      expect(result.body.status).eq('Successful updated');
+
+      const updatedUser = await request(app).get(`/api/users/${newUser.body.user.id}`);
+
+      expect(updatedUser.body.user.name).eq(newUserAssertionUpdate.name);
+      expect(updatedUser.body.user.age).eq(newUserAssertionUpdate.age);
+      expect(updatedUser.body.user.additional_info).eq(newUserAssertionUpdate.additional_info);
+
+      await request(app).delete(`/api/users/${newUser.body.user.id}`);
     });
 
     it("should delete user by id with valid data", async () => {
-      const newUser = await request(app).get(`/api/users/${8}`);
+      const newUser = await request(app).post("/api/users").send(newUserAssertion);
+      const result = await request(app).delete(`/api/users/${newUser.body.user.id}`);
 
-      expect(newUser.statusCode).eq(200);
+      expect(result.statusCode).eq(200);
+      expect(result.body).to.have.property('status');
+      expect(result.body.status).eq('Successful deleted');
     });
   });
 
