@@ -14,6 +14,8 @@ CRUD Node.JS TS folfer includes APP with CRUD operations with users with Sequeli
 
 CRUD with folfer includes APP with CRUD operations with users with Sequelize, Sequelize-CLI, Express, MySQL and basic-basic FrontEnd part
 
+API folder includes api testing with indepedent test of CRUD APP
+
 Link to postman collection with requests https://www.getpostman.com/collections/2955cd0d65957a92c97a
 
 Link to tasks https://docs.google.com/document/d/1lEg7X-VmX5ovfb2OVnwdHbHHc8mTMnaHtVXAmDK_oho
