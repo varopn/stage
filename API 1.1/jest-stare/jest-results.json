@@ -1,0 +1,584 @@
+{
+  "numFailedTestSuites": 0,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 3,
+  "numPassedTests": 28,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 3,
+  "numTotalTests": 28,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1631184942393,
+  "success": false,
+  "testResults": [
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 13,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1631184942915,
+        "runtime": 457,
+        "slow": false,
+        "start": 1631184942458
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testFilePath": "/home/dev-qa/Desktop/projects/stage/API 1.1/__test__/ik.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 41,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should get hello message on home page",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get hello message on home page"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 32,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should create a user with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should create a user with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 26,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should get all users",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get all users"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 25,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should get user by id with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get user by id with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 30,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should update user with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should update user with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 16,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should delete user by id with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should delete user by id with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with empty data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with empty data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 7,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with not fully data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with not fully data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with not fully data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with not fully data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with not fully data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with not fully data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should get error message when getting not existing user",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get error message when getting not existing user"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 9,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should get error message when deleting not existing user",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get error message when deleting not existing user"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should get error message when updating not existing user",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get error message when updating not existing user"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 2,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1631184943176,
+        "runtime": 204,
+        "slow": false,
+        "start": 1631184942972
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testFilePath": "/home/dev-qa/Desktop/projects/stage/API 1.1/__test__/postAndGet.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "POST request"
+          ],
+          "duration": 51,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "POST request Create user data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Create user data"
+        },
+        {
+          "ancestorTitles": [
+            "GET all user details"
+          ],
+          "duration": 33,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "GET all user details GET user output",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "GET user output"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 13,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1631184943467,
+        "runtime": 255,
+        "slow": false,
+        "start": 1631184943212
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testFilePath": "/home/dev-qa/Desktop/projects/stage/API 1.1/__test__/putAndDelete.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 11,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should get hello message on home page",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get hello message on home page"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 26,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should create a user with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should create a user with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 23,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should get all users",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get all users"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 24,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should get user by id with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get user by id with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 31,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should update user with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should update user with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Positive test"
+          ],
+          "duration": 17,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Positive test should delete user by id with valid data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should delete user by id with valid data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with empty data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with empty data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with not fully data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with not fully data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 7,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with not fully data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with not fully data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should not create a user with not fully data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should not create a user with not fully data"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should get error message when getting not existing user",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get error message when getting not existing user"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should get error message when deleting not existing user",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get error message when deleting not existing user"
+        },
+        {
+          "ancestorTitles": [
+            "Crud api integration tests",
+            "Negative test"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Crud api integration tests Negative test should get error message when updating not existing user",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should get error message when updating not existing user"
+        }
+      ],
+      "failureMessage": null
+    }
+  ],
+  "wasInterrupted": false,
+  "coverageMap": {
+    "/home/dev-qa/Desktop/projects/stage/API 1.1/commonTests.js": {
+      "path": "/home/dev-qa/Desktop/projects/stage/API 1.1/commonTests.js",
+      "statementMap": {
+        "0": {
+          "start": {
+            "line": 1,
+            "column": 18
+          },
+          "end": {
+            "line": 1,
+            "column": 38
+          }
+        },
+        "1": {
+          "start": {
+            "line": 2,
+            "column": 16
+          },
+          "end": {
+            "line": 2,
+            "column": 51
+          }
+        },
+        "2": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        }
+      },
+      "fnMap": {},
+      "branchMap": {},
+      "s": {
+        "0": 2,
+        "1": 2,
+        "2": 2
+      },
+      "f": {},
+      "b": {},
+      "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+      "hash": "9a701ed6a51cf17976fb61e996b4e41a3c523b24"
+    }
+  }
+}

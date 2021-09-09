@@ -29,6 +29,7 @@ users.post("/api/users", async (req: Request, res: Response) => {
           throw "Error";
         }
         res.status(201).send({ user, status: "created" });
+        console.log(user);
       })
       .catch((err: any) => {
         console.log(err);
