@@ -11,6 +11,10 @@
       "html",
       "text"
     ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "data.js"
+  ],
     "coverageThreshold": {
       "global": {
         "branches": 100,
@@ -37,6 +41,7 @@
     "supertest": "^6.1.6"
   },
   "dependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "faker": "^5.5.3"
   }
 }
