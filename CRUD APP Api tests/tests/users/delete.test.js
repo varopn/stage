@@ -1,7 +1,7 @@
 const chai = require('chai');
 const { expect } = require('chai');
 const request = require('../../commonTests');
-const UserAssertion = require('../../testData/data')
+const UserAssertion = require('../../testData/data');
 let test_data = new UserAssertion.UserAssertion();
 
 chai.should();

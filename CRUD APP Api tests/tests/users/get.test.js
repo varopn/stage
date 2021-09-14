@@ -1,7 +1,7 @@
 const chai = require('chai');
 const { expect } = require('chai');
 const request = require('../../commonTests');
-const UserAssertion = require('../../test data/data')
+const UserAssertion = require('../../testData/data');
 let test_data = new UserAssertion.UserAssertion();
 
 chai.should();
@@ -28,9 +28,14 @@ describe('Crud api integration tests', () => {
       userList.body.reverse();
       expect(userList.body[0].name).eq(newUserAssertion.name);
       expect(userList.body[0].age).eq(newUserAssertion.age);
-      expect(userList.body[0].additional_info).eq(
-        newUserAssertion.additional_info,
-      );
+      expect(userList.body[0].additional_info).eq(newUserAssertion.additional_info);
+
+      for (let user of userList.body) {
+        expect(user).to.have.property('id');
+        expect(user).to.have.property('name');
+        expect(user).to.have.property('age');
+        expect(user).to.have.property('additional_info');
+      }
 
       await request.request.delete(`api/users/${userList.body[0].id}`);
     });
